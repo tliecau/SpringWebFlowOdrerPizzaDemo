@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:flow="http://www.springframework.org/schema/webflow-config"
+       xsi:schemaLocation=
+               "http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans.xsd
+                http://www.springframework.org/schema/webflow-config
+                http://www.springframework.org/schema/webflow-config/spring-webflow-config-2.4.xsd">
+
+    <bean class="org.springframework.webflow.mvc.servlet.FlowHandlerMapping">
+        <property name="flowRegistry" ref="pizzaFlowRegistry"/>
+    </bean>
+
+    <bean class="org.springframework.webflow.mvc.servlet.FlowHandlerAdapter">
+        <property name="flowExecutor" ref="pizzaFlowExecutor"/>
+    </bean>
+
+    <!--responsible for creating and executrion of a flow-->
+    <flow:flow-executor id="pizzaFlowExecutor" flow-registry="pizzaFlowRegistry" />
+
+    <flow:flow-registry id="pizzaFlowRegistry" flow-builder-services="flowBuilderServices">
+        <flow:flow-location-pattern value="/WEB-INF/pizza/*-flow.xml" />
+    </flow:flow-registry>
+
+    <!--bez tego szuka w web-flow-->
+    <flow:flow-builder-services id="flowBuilderServices" view-factory-creator="mvcViewFactoryCreator"/>
+
+    <bean id="mvcViewFactoryCreator" class="org.springframework.webflow.mvc.builder.MvcViewFactoryCreator">
+        <property name="viewResolvers" ref="viewResolver"/>
+    </bean>
+</beans>
