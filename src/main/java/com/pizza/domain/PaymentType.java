@@ -5,21 +5,13 @@ import java.util.List;
 
 import static org.apache.commons.lang.WordUtils.capitalizeFully;
 
-public enum Topping {
-    PEPPERONI,
-    SAUSAGE,
-    HAMBURGER,
-    MUSHROOM,
-    CANADIAN_BACON,
-    PINEAPPLE,
-    GREEN_PEPPER,
-    JALAPENO,
-    TOMATO,
-    ONION,
-    EXTRA_CHEESE;
+public enum PaymentType  {
+    CASH,
+    CHECK,
+    CREDIT_CARD;
 
-    public static List<Topping> asList() {
-        Topping[] all = Topping.values();
+    public static List<PaymentType> asList() {
+        PaymentType[] all = PaymentType.values();
         return Arrays.asList(all);
     }
 
