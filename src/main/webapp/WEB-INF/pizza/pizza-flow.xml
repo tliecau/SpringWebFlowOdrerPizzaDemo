@@ -8,13 +8,13 @@
 
 <subflow-state id="identifyCustomer" subflow="customer-flow">
         <output name="customer" value="order.customer" />
-        <transition on="customerReady" to="thankCustomer" />
+        <transition on="customerReady" to="buildOrder" />
     </subflow-state>
 
-    <!--<subflow-state id="buildOrder" subflow="pizza/order">-->
-        <!--<input name="order" value="oreder" />-->
-        <!--<transition on="orderCreated" to="takePayment" />-->
-    <!--</subflow-state>-->
+    <subflow-state id="buildOrder" subflow="order-flow">
+    <input name="order" value="order" />
+    <transition on="orderCreated" to="thankCustomer" />
+    </subflow-state>
 
     <!--<subflow-state id="takePayment" subflow="pizza/payment">-->
         <!--<input name="order" value="order" />-->
