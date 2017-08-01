@@ -4,7 +4,6 @@
     <title>MyPizza</title>
 </head>
 <body>
-<h2>Thank you for the order!</h2>
-<a href="${flowExecutionUrl}&_eventId=finished">END</a>
+Warning
 </body>
 </html>

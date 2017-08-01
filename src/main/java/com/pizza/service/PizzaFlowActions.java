@@ -13,7 +13,7 @@ public class PizzaFlowActions {
     }
 
     public boolean checkDeliveryArea(String zipcode) {
-        return true;
+        return zipcode.contains("80");
     }
 
     public void addCustomer(Customer customer) {
